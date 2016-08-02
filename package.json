@@ -1,0 +1,40 @@
+{
+  "name": "micro-app-ping-monitor",
+  "version": "0.0.5",
+  "description": "internet liveness monitor",
+  "main": "lib/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node lib/server.js"
+  },
+  "dependencies": {
+    "micro-app-framework": "^0.1.1",
+    "socket.io": "~1.3.7",
+    "mqtt": "~1.6.3",
+    "twilio": "^2.2.0",
+    "tcp-ping": "^0.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhdawson/micro-app-ping-monitor.git"
+  },
+  "keywords": [
+    "iot",
+    "mqtt",
+    "dashboard",
+    "micro-app",
+    "sensor"
+  ],
+  "author": "Michael Dawson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mhdawson/micro-app-ping-monitor/issues"
+  },
+  "homepage": "https://github.com/mhdawson/micro-app-ping-monitor#readme",
+  "contributors": [
+    {
+      "name": "Michael Dawson",
+      "email": "mdawson@devrus.com"
+    }
+  ]
+}
