@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<!--
+Copyright 2016 the project authors as listed in the AUTHORS file.
+All rights reserved. Use of this source code is governed by the
+license that can be found in the LICENSE file.
+-->
+
+<html>
+  <head>
+    <title><DASHBOARD_TITLE></title>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      socket = new io.connect('<URL_TYPE>://' + window.location.host);
+
+      var sendButton = function(buttonId) {
+        socket.emit('button',buttonId);
+        var button = document.getElementById("button" + buttonId)
+        button.style.opacity = 0.5
+        setTimeout(function() { button.style.opacity = 1 }, 300);
+      }
+    </script>
+  </head>
+
+  <body>
+<BUTTONS>
+  </body>
+</html>
