@@ -14,6 +14,21 @@ license that can be found in the LICENSE file.
 
     <script>
       socket = new io.connect('<URL_TYPE>://' + window.location.host);
+      socket.on('data', function(data) {
+        var type = data.type;
+        if (data.type === 'ENTRY_STATUS') {
+          var targetTD = document.getElementById(data.buttonId);
+          if (null != targetTD) {
+            if (data.state === 'GREEN') {
+              targetTD.style.background = 'green';
+            } else if (data.state === 'AMBER') {
+              targetTD.style.background = 'yellow';
+            } else if (data.state === 'RED') {
+              targetTD.style.background = 'red';
+            }
+          }
+        }
+      });
 
       var sendButton = function(buttonId) {
         socket.emit('button',buttonId);

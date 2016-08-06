@@ -8,7 +8,7 @@
     "start": "node lib/server.js"
   },
   "dependencies": {
-    "micro-app-framework": "^0.1.1",
+    "micro-app-framework": "^0.1.4",
     "socket.io": "~1.3.7",
     "mqtt": "~1.6.3",
     "twilio": "^2.2.0",
