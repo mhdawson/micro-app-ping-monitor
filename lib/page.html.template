@@ -36,6 +36,20 @@ license that can be found in the LICENSE file.
         button.style.opacity = 0.5
         setTimeout(function() { button.style.opacity = 1 }, 300);
       }
+
+      var showLog = function() {
+        var button = document.getElementById("showlog")
+        var logdata = document.getElementById("logdata")
+        button.style.opacity = 0.5
+        setTimeout(function() { button.style.opacity = 1 }, 300);
+        if (logdata.style.display !== 'block') {
+          logdata.style.display = 'block';
+          button.innerHTML = 'show status';
+        } else {
+          logdata.style.display = 'none';
+          button.innerHTML = 'show log';
+        }
+      }
     </script>
   </head>
 
