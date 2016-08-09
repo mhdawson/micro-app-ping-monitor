@@ -13,6 +13,8 @@ license that can be found in the LICENSE file.
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
+      var MAX_LOG_LINES = 1000;
+
       socket = new io.connect('<URL_TYPE>://' + window.location.host);
       socket.on('data', function(data) {
         var type = data.type;
@@ -32,14 +34,14 @@ license that can be found in the LICENSE file.
 
       var sendButton = function(buttonId) {
         socket.emit('button',buttonId);
-        var button = document.getElementById("button" + buttonId)
+        var button = document.getElementById('button' + buttonId)
         button.style.opacity = 0.5
         setTimeout(function() { button.style.opacity = 1 }, 300);
       }
 
       var showLog = function() {
-        var button = document.getElementById("showlog")
-        var logdata = document.getElementById("logdata")
+        var button = document.getElementById('showlog')
+        var logdata = document.getElementById('logdata')
         button.style.opacity = 0.5
         setTimeout(function() { button.style.opacity = 1 }, 300);
         if (logdata.style.display !== 'block') {
@@ -50,6 +52,17 @@ license that can be found in the LICENSE file.
           button.innerHTML = 'show log';
         }
       }
+
+      var eventLogLines = 0;
+      socket.on('eventLog', function(line) {
+        var eventLog = document.getElementById('logdata');
+        eventLog.innerHTML = line + '<br>' + eventLog.innerHTML;
+        if (eventLogLines > MAX_LOG_LINES) {
+          eventLog.innerHTML = eventLog.innerHTML.substring(0,eventLog.innerHTML.lastIndexOf('<br>'));
+        } else {
+          eventLogLines++;
+        }
+      });
     </script>
   </head>
 
