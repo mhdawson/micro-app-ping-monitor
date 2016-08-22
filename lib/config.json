@@ -1,0 +1,39 @@
+  {
+  "windowSize": {"x": 200, "y": 256 },
+  "monitorInstances": [
+    { "name": "Internet availability",
+      "button" : { "size": {"x": 198, "y": 30 },
+                   "position": {"x": 1, "y": 0 },
+                   "label": "Internet Avail" },
+      "checks": [ { "host": "www.google.com", "port": 80 },
+                  { "host": "myhost.com", "port": 22 }
+                ],
+      "commands": [ { "delay": 0, "topic": "home/2272/200", "message": "0F0F0FF00110" },
+                    { "delay": 5000, "topic": "home/2272/200", "message": "0F0F0FF00110" },
+                    { "delay": 30000, "topic": "home/2272/200", "message": "0F0F0FF00101" },
+                    { "delay": 35000, "topic": "home/2272/200", "message": "0F0F0FF00101" },
+                    { "delay": 40000, "topic": "home/2272/200", "message": "0F0F0FF00101" }
+                  ],
+      "type": "any",
+      "pingInterval": 300000,
+      "alertTime": 900000
+    },
+    { "name": "My website",
+      "button" : { "size": {"x": 198, "y": 30 },
+                   "position": {"x": 1, "y": 32 },
+                   "label": "website" },
+      "checks": [ { "host": "www.mywebsite.com", "port": 80 }
+                ],
+      "type": "all",
+      "pingInterval": 300000,
+      "alertTime": 900000
+    }
+  ],
+  "serverPort": 3001,
+  "mqttServerUrl": "tcp://XX.XX.XX.XX:1883",
+  "twilio": { "sendError": true,
+              "accountSID": "XXXX",
+              "accountAuthToken": "XXXX",
+              "toNumber": "XXXXXXXXXXX" , "fromNumber": "XXXXXXXXXX" },
+  "eventLogPrefix" : "/home/user1/ping/micro-app-ping-monitor"
+}
