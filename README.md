@@ -1,12 +1,13 @@
 # micro-app-ping-monitor
 
 Micro-app to monitor remote hosts and alert and take action when
-hosts are not responding.
+hosts are not responding. Its obviously not a replacement for
+a full featured monitoring tool but is handy if you want to monitor a small number of hosts and automtically be notified or
+take action when they are not responding.
 
 It allows one or more monitor instances to be defined, each with
 one or more hosts to be monitored.  If more than one host is
-configured for an instance it can be "all" or "any".  In the case of
-all, all of the hosts must respond or an alert is signaled. In
+configured for an instance it can be "all" or "any".  In the case of all, all of the hosts must respond or an alert is signaled. In
 the case of "any" then only if none of the hosts are available
 will an alert be signaled.
 
@@ -143,3 +144,33 @@ some sensitive elements masked out:
   "eventLogPrefix" : "/home/user1/ping/micro-app-ping-monitor"
 }
 ```
+
+# Installation
+
+Simply run npm install micro-app-ping-monitor.
+
+# Running
+
+To run the ping-monitor micro-app, add node.js to your path (currently required 4.x or better) and then run:
+
+```
+npm start
+```
+
+# Key dependencies
+
+## micro-app-framework
+As a micro-app the micro-app-ping-monitor app depends on the micro-app-framework:
+
+* [micro-app-framework npm](https://www.npmjs.com/package/micro-app-framework)
+* [micro-app-framework github](https://github.com/mhdawson/micro-app-framework)
+
+See the documentation on the micro-app-framework for more information on general configurtion options (in addition to those documented in this readme) that are availble (ex using tls, authentication, serverPort, etc).
+
+## tcp-ping
+
+[tcp-ping](https://www.npmjs.com/package/tcp-ping) which is used to do the connectivity checks to the remote hosts.
+
+## twilio
+
+[Twilio](https://www.twilio.com/) which is used to send sms messaages.
