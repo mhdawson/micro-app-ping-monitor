@@ -1,5 +1,5 @@
   {
-  "windowSize": {"x": 200, "y": 256 },
+  "windowSize": {"x": 220, "y": 274 },
   "monitorInstances": [
     { "name": "Internet availability",
       "button" : { "size": {"x": 198, "y": 30 },
