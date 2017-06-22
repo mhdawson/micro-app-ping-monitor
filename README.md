@@ -55,8 +55,8 @@ The configuration entries that must be updated include:
 * serverPort - port on which the server will listen.
 * mqttServerUrl: - url for mqtt server on which commands will
   be posted when alerts are triggered.
-* twilio - object which contains fields for twilio configuration
-  used to send sms messages as described below.
+* notify- object which contains fields for sending notificaitons
+  as described below.
 * eventLogPrefix - path to the directory in which the event log
   file will be stored.
 
@@ -89,14 +89,34 @@ Each command object has the following fields:
 * topic - the mqtt topic on which the message will be posted.
 * message - the message to be posted to the mqtt topic.
 
-The twilio object has the following fields:
+The notify object has the following fields:
 
-* sendError - set to true if you want to send an sms
-  message when an log message at the "error" level is logged.
-* accountSID - your twilio account ID.
-* accountAuthToken - your twilio auth token.
-* toNumber - number to which an sms will be sent.
-* fromNumber - your twilio from number.
+* mqttSmsBridge
+  * enabled - set to true if you want notifications to
+    be sent using this provider.
+  * serverUrl - url for the mqtt server to which the
+    bridge is connected.
+  * topic - topic on which the bridge listens for
+    notification requests.
+  * certs - directory which contains the keys/certs
+    required to connect to the mqtt server if the
+    url is of type `mqtts`.
+
+* voipms
+  * enabled - set to true if you want notifications to
+    be sent using this provider.
+  * user - voip.ms API userid.
+  * password - voip.ms API password.
+  * did - voip.ms did(number) from which the SMS will be sent.
+  * dst - number to which the SMS will be sent.
+
+* twilio
+  * enabled - set to true if you want notifications to
+    be sent using this provider.
+  * accountSID - twilio account ID.
+  * accountAuthToken - twilio auth token.
+  * toNumber - number to which the SMS will be sent.
+  * fromNumber - number from which the SMS will be sent.
 
 The following is an example of a configuration file with
 some sensitive elements masked out:  
@@ -134,11 +154,12 @@ some sensitive elements masked out:
     }
   ],
   "serverPort": 3001,
-  "mqttServerUrl": "tcp://XX.XX.XX.XX:1883",
-  "twilio": { "sendError": true,
-              "accountSID": "XXXX",
-              "accountAuthToken": "XXXX",
-              "toNumber": "XXXXXXXXXXX" , "fromNumber": "XXXXXXXXXX" },
+  "mqttServerUrl": "tcp://X.X.X.X:1883",
+  "notify": {
+    "mqttSmsBridge": { "enabled": true,
+                       "serverUrl": "mqtt:X.X.X.X:1883",
+                       "topic": "house/sms" }
+  },
   "eventLogPrefix" : "/home/user1/ping/micro-app-ping-monitor"
 }
 ```
