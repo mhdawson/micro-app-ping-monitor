@@ -30,10 +30,11 @@
     }
   ],
   "serverPort": 3001,
-  "mqttServerUrl": "tcp://XX.XX.XX.XX:1883",
-  "twilio": { "sendError": true,
-              "accountSID": "XXXX",
-              "accountAuthToken": "XXXX",
-              "toNumber": "XXXXXXXXXXX" , "fromNumber": "XXXXXXXXXX" },
+  "mqttServerUrl": "tcp://X.X.X.X:1883",
+  "notify": {
+    "mqttSmsBridge": { "enabled": true,
+                       "serverUrl": "mqtt:X.X.X.X:1883",
+                       "topic": "house/sms" }
+  },
   "eventLogPrefix" : "/home/user1/ping/micro-app-ping-monitor"
 }
